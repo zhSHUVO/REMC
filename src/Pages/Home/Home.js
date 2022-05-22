@@ -1,19 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import assemble from "../../assests/images/assemble.jpg";
 import checking from "../../assests/images/checking.jpg";
 import gear from "../../assests/images/gear.jpg";
 import quality from "../../assests/images/quality.jpg";
 import useElectronics from "../../Hooks/useElectronics";
 import SingleProduct from "../AllProducts/SingleProduct";
-import Navbar from "../Universal/Navbar";
+import BusinessSummery from "./BusinessSummery";
 
 const Home = () => {
     const [electronics, setElectronics] = useElectronics();
 
     return (
         <div>
-            <Navbar></Navbar>
-
             <h1 className="text-center text-accent text-4xl mb-8">
                 Root Electronics and Manufacturing Company
             </h1>
@@ -82,8 +81,12 @@ const Home = () => {
                 </div>
             </div>
             <div className="text-center m-5">
-                <button className="btn">View All</button>
+                <Link to="/allproducts">
+                    <button className="btn">View All</button>
+                </Link>
             </div>
+
+            <BusinessSummery></BusinessSummery>
         </div>
     );
 };

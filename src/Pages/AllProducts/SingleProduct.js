@@ -1,5 +1,4 @@
 import React from "react";
-import "./SingleProduct.css";
 
 const SingleProduct = ({ electronic }) => {
     const { name, description, img, stock, minQuantity, price } = electronic;
@@ -15,15 +14,18 @@ const SingleProduct = ({ electronic }) => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
-                <p>{description}</p>
                 <p>
-                    <span>Available:</span> {stock} pieces
+                    <span className="font-bold">Info:</span> {description}
                 </p>
                 <p>
-                    <span>Minimum order quantity:</span> {minQuantity} pieces
+                    <span className="font-bold">Available:</span> {stock} pieces
                 </p>
                 <p>
-                    <span>Price:</span> $ {price}
+                    <span className="font-bold">Minimum order quantity:</span>{" "}
+                    {minQuantity} pieces
+                </p>
+                <p>
+                    <span className="font-bold">Price:</span> $ {price}
                 </p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">Buy</button>

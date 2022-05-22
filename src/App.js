@@ -1,9 +1,11 @@
 import "./App.css";
+import Home from "./Pages/Home/Home";
+import Navbar from "./Pages/Universal/Navbar";
 
 function App() {
     return (
         <div>
-            <h1>REMC - Root Electronics and Manufacturing Company</h1>
+            <Home></Home>
         </div>
     );
 }

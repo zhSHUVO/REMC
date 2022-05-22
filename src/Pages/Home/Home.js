@@ -3,12 +3,20 @@ import assemble from "../../assests/images/assemble.jpg";
 import checking from "../../assests/images/checking.jpg";
 import gear from "../../assests/images/gear.jpg";
 import quality from "../../assests/images/quality.jpg";
+import useElectronics from "../../Hooks/useElectronics";
+import SingleProduct from "../AllProducts/SingleProduct";
 import Navbar from "../Universal/Navbar";
 
 const Home = () => {
+    const [electronics, setElectronics] = useElectronics();
+
     return (
         <div>
             <Navbar></Navbar>
+
+            <h1 className="text-center text-accent text-4xl mb-8">
+                Root Electronics and Manufacturing Company
+            </h1>
 
             {/* carousel */}
             <div className="carousel w-full">
@@ -56,6 +64,25 @@ const Home = () => {
                         </a>
                     </div>
                 </div>
+            </div>
+
+            {/* Product Showcase */}
+            <div className="mt-10 px-10">
+                <h1 className="text-center text-3xl mb-5">Featured Products</h1>
+                <div>
+                    <div className="grid lg:grid-cols-3 grid-cols-1 gap-7 justify-items-center">
+                        {electronics.slice(0, 6).map((electronic) => (
+                            <div key={electronic._id}>
+                                <SingleProduct
+                                    electronic={electronic}
+                                ></SingleProduct>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="text-center m-5">
+                <button className="btn">View All</button>
             </div>
         </div>
     );

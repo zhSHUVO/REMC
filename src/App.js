@@ -5,6 +5,7 @@ import Blog from "./Pages/Blog/Blog";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
 import Portfolio from "./Pages/Portfolio/Portfolio";
+import Footer from "./Pages/Universal/Footer";
 import Navbar from "./Pages/Universal/Navbar";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 ></Route>
                 <Route path="/blog" element={<Blog></Blog>}></Route>
             </Routes>
+            <Footer></Footer>
         </div>
     );
 }

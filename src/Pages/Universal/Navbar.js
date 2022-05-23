@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const user = false;
     return (
         <div className="navbar bg-base-100 justify-between	lg:px-12">
             <div className="navbar-start">
@@ -54,14 +55,58 @@ const Navbar = () => {
                         <Link to="/blog">Blog</Link>
                     </li>
                 </ul>
-                <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img
-                            src="https://api.lorem.space/image/face?hash=33791"
-                            alt="profileimg"
-                        />
-                    </div>
-                </label>
+
+                <div className="dropdown dropdown-end">
+                    {user ? (
+                        <div>
+                            <label
+                                tabIndex="0"
+                                className="btn btn-ghost btn-circle avatar"
+                            >
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        src="https://api.lorem.space/image/face?hash=33791"
+                                        alt=""
+                                    />
+                                </div>
+                            </label>
+                            <ul
+                                tabIndex="0"
+                                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                            >
+                                <li>
+                                    <Link
+                                        to="/profile"
+                                        className="justify-between"
+                                    >
+                                        Profile
+                                        <span className="badge">New</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/settings">Settings</Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/"
+                                        className="btn btn-sm btn-ghost text-lg normal-case justify-start pt-0"
+                                    >
+                                        Logout
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    ) : (
+                        <div>
+                            <Link
+                                to="/login"
+                                className="btn btn-ghost normal-case text-xl"
+                            >
+                                Login
+                            </Link>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

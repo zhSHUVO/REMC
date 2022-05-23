@@ -7,7 +7,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="mt-14">
+        <div className="mt-14 sticky top-[100vh]">
             <footer className="footer p-10 bg-base-200 text-base-content flex items-center justify-around">
                 <div>
                     <span className="footer-title">Services</span>

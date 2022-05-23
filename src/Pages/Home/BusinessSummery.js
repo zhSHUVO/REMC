@@ -3,7 +3,7 @@ import React from "react";
 const BusinessSummery = () => {
     return (
         <div>
-            <h1 className="text-center text-2xl">Our Progress</h1>
+            <h1 className="text-center text-3xl mb-5">Our Progress</h1>
 
             <div className="flex justify-center">
                 <div className="grid lg:grid-cols-6 grid-cols-2 max-w-max">

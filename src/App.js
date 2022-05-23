@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./Pages/Account/Login";
 import Register from "./Pages/Account/Register";
+import UpdateUser from "./Pages/Account/UpdateUser";
 import Blog from "./Pages/Blog/Blog";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
@@ -26,6 +27,10 @@ function App() {
                 <Route
                     path="/dashboard"
                     element={<Dashboard></Dashboard>}
+                ></Route>
+                <Route
+                    path="/updateuser"
+                    element={<UpdateUser></UpdateUser>}
                 ></Route>
                 <Route
                     path="/portfolio"

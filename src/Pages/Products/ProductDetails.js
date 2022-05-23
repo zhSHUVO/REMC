@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const ProductDetails = () => {
-    const productId = useParams();
+    const [user] = useAuthState(auth);
 
+    const productId = useParams();
     const [product, setProduct] = useState({});
     useEffect(() => {
         const url = `http://localhost:5000/product/${productId.id}`;
@@ -31,34 +34,40 @@ const ProductDetails = () => {
                     className="flex flex-col lg:w-1/4 w-3/4	shadow-2xl bg-base-100 rounded-xl p-5"
                 >
                     <input
+                        value={user?.displayName}
                         placeholder="Username"
                         className="mb-3 input input-bordered"
                         {...register("username")}
                     />
                     <input
+                        value={user?.email}
                         placeholder="Email"
                         className="mb-3 input input-bordered"
                         type="email"
                         {...register("email")}
                     />
                     <input
+                        value={product.name}
                         placeholder="Product's Name"
                         className="mb-3 input input-bordered"
                         {...register("product")}
                     />
                     <input
+                        value={product.stock}
                         placeholder="Available Products"
                         className="mb-3 input input-bordered"
                         type="number"
                         {...register("available")}
                     />
                     <input
+                        value={product.minQuantity}
                         placeholder="Minimum Order Amount"
                         className="mb-3 input input-bordered"
                         type="number"
                         {...register("order")}
                     />
                     <input
+                        value={product.price}
                         placeholder="Price"
                         className="mb-3 input input-bordered"
                         type="number"

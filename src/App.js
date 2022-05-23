@@ -1,10 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AllProducts from "./Pages/AllProducts/AllProducts";
 import Blog from "./Pages/Blog/Blog";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
 import Portfolio from "./Pages/Portfolio/Portfolio";
+import AllProducts from "./Pages/Products/AllProducts";
+import ProductDetails from "./Pages/Products/ProductDetails";
+import Purchase from "./Pages/Purchase/Purchase";
 import Footer from "./Pages/Universal/Footer";
 import Navbar from "./Pages/Universal/Navbar";
 
@@ -28,6 +30,11 @@ function App() {
                     element={<Portfolio></Portfolio>}
                 ></Route>
                 <Route path="/blog" element={<Blog></Blog>}></Route>
+                <Route
+                    path="/product/:id"
+                    element={<ProductDetails></ProductDetails>}
+                ></Route>
+                <Route path="/purchase" element={<Purchase></Purchase>}></Route>
             </Routes>
             <Footer></Footer>
         </div>

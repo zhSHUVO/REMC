@@ -5,7 +5,7 @@ import checking from "../../assests/images/checking.jpg";
 import gear from "../../assests/images/gear.jpg";
 import quality from "../../assests/images/quality.jpg";
 import useElectronics from "../../Hooks/useElectronics";
-import SingleProduct from "../AllProducts/SingleProduct";
+import SingleProduct from "../Products/SingleProduct";
 import BusinessSummery from "./BusinessSummery";
 
 const Home = () => {

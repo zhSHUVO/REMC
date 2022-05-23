@@ -13,10 +13,9 @@ module.exports = {
                     accent: "#484b6a",
                     neutral: "#3d4451",
                     "base-100": "#fafafa",
+                    placeholder: "#a0aec0",
                 },
             },
-            "dark",
-            "cupcake",
         ],
     },
 

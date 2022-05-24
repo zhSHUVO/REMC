@@ -100,7 +100,7 @@ const Navbar = () => {
                                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                             >
                                 <li>
-                                    <p>{user.email}</p>
+                                    <p>{user.displayName}</p>
                                 </li>
                                 <li>
                                     <Link

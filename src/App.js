@@ -2,9 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./Pages/Account/Login";
 import Register from "./Pages/Account/Register";
-import UpdateUser from "./Pages/Account/UpdateUser";
 import Blog from "./Pages/Blog/Blog";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyOrders from "./Pages/Dashboard/MyOrders";
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import MyReviews from "./Pages/Dashboard/MyReviews";
 import Home from "./Pages/Home/Home";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import AllProducts from "./Pages/Products/AllProducts";
@@ -24,14 +26,17 @@ function App() {
                     path="/allproducts"
                     element={<AllProducts></AllProducts>}
                 ></Route>
-                <Route
-                    path="/dashboard"
-                    element={<Dashboard></Dashboard>}
-                ></Route>
-                <Route
-                    path="/updateuser"
-                    element={<UpdateUser></UpdateUser>}
-                ></Route>
+                <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+                    <Route index element={<MyOrders></MyOrders>}></Route>
+                    <Route
+                        path="myreviews"
+                        element={<MyReviews></MyReviews>}
+                    ></Route>
+                    <Route
+                        path="myprofile"
+                        element={<MyProfile></MyProfile>}
+                    ></Route>
+                </Route>
                 <Route
                     path="/portfolio"
                     element={<Portfolio></Portfolio>}

@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+    useCreateUserWithEmailAndPassword,
+    useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -15,18 +18,20 @@ const Register = () => {
         useCreateUserWithEmailAndPassword(auth, {
             sendEmailVerification: true,
         });
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        createUserWithEmailAndPassword(data.email, data.password);
+    const onSubmit = async (data) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.username });
     };
 
     useEffect(() => {
         if (user) {
-            navigate("/updateuser");
+            navigate("/");
         }
-    }, [user]);
+    }, [navigate, user]);
 
     return (
         <div className="pt-20">
@@ -36,6 +41,23 @@ const Register = () => {
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col lg:w-1/4 w-3/4	shadow-2xl bg-base-100 rounded-xl p-5"
                 >
+                    <div className="indicator w-full">
+                        <input
+                            placeholder="Username"
+                            className="my-1 input input-bordered w-full "
+                            type="text"
+                            {...register("username", {
+                                required: {
+                                    value: true,
+                                    message: "Name is Required",
+                                },
+                            })}
+                        />
+                        {errors.username && (
+                            <span className="indicator-item badge">Update</span>
+                        )}
+                    </div>
+
                     <div className="indicator w-full">
                         <input
                             placeholder="Email"

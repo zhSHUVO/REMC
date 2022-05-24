@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const ProductDetails = () => {
     const [user] = useAuthState(auth);
 
+    const addressRef = useRef("");
+    const quantityRef = useRef("");
+
     const productId = useParams();
     const [product, setProduct] = useState({});
-
     useEffect(() => {
         const url = `http://localhost:5000/product/${productId.id}`;
         fetch(url)
@@ -17,18 +18,34 @@ const ProductDetails = () => {
             .then((data) => setProduct(data));
     }, [productId.id]);
 
-    const userInfo = {
-        username: user?.displayName,
-        email: user?.email,
-    };
+    const [delivery, setDelivery] = useState("");
 
-    console.log(userInfo);
+    const buyProduct = (event) => {
+        event.preventDefault();
 
-    const { register, handleSubmit } = useForm({
-        defaultValues: userInfo,
-    });
+        const name = user.displayName;
+        const userMail = user.email;
+        const address = addressRef.current.value;
+        const productname = product.name;
+        const img = product.img;
+        const quantity = quantityRef.current.value;
+        const price = product.price * quantity;
+        const status = "pending";
 
-    const onSubmit = (data) => {
+        const data = {
+            name,
+            userMail,
+            address,
+            productname,
+            img,
+            quantity,
+            price,
+            status,
+            delivery,
+        };
+
+        console.log(data);
+
         fetch("http://localhost:5000/orders", {
             method: "POST",
             headers: {
@@ -58,50 +75,78 @@ const ProductDetails = () => {
                     <p>Minimum order amount: {product.minQuantity} pieces</p>
                     <p>Price: ${product.price}</p>
                 </div>
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="flex flex-col lg:w-3/12 w-3/4	shadow-2xl bg-base-100 rounded-xl p-5"
-                >
-                    <input
-                        placeholder="Username"
-                        className="mb-3 input input-bordered"
-                        {...register("username")}
-                    />
-                    <input
-                        placeholder="Email"
-                        className="mb-3 input input-bordered"
-                        type="email"
-                        {...register("email")}
-                    />
-                    <input
-                        value={product?.name}
-                        placeholder="Product Name"
-                        className="mb-3 input input-bordered"
-                        {...register("product")}
-                    />
+                <form className="w-full max-w-sm">
+                    <div className=" mb-6">
+                        <div className="w-full">
+                            <input
+                                readOnly
+                                className="input input-bordered w-full "
+                                id="inline-full-name"
+                                type="text"
+                                value={user?.displayName || ""}
+                            />
+                        </div>
+                    </div>
+                    <div className=" mb-6">
+                        <div className="w-full">
+                            <input
+                                readOnly
+                                className="input input-bordered w-full"
+                                id="inline-full-name"
+                                type="text"
+                                value={user?.email || ""}
+                            />
+                        </div>
+                    </div>
+                    <div className=" mb-6">
+                        <div className="w-full">
+                            <input
+                                ref={addressRef}
+                                placeholder="Your Address"
+                                className="input input-bordered w-full "
+                                id="inline-full-name"
+                                type="text"
+                            />
+                        </div>
+                    </div>
 
-                    <input
-                        placeholder="Quantity"
-                        min={product.minQuantity}
-                        max={product.stock}
-                        className="mb-3 input input-bordered"
-                        type="number"
-                        {...register("quantity")}
-                    />
-                    <select
-                        className="mb-3 select select-bordered font-normal"
-                        {...register("payment")}
-                    >
-                        <option value="">Payment Option</option>
-                        <option>Online Payment</option>
-                        <option>Cash on Delivary</option>
-                    </select>
+                    <div className=" mb-6">
+                        <div className="w-full">
+                            <input
+                                ref={quantityRef}
+                                placeholder="Quantity"
+                                className="input input-bordered w-full  "
+                                id="inline-full-name"
+                                type="number"
+                            />
+                        </div>
+                    </div>
+                    <div className=" mb-6">
+                        <div className="w-full">
+                            <select
+                                name="delivery"
+                                className="select select-bordered w-full "
+                                onChange={(e) => {
+                                    const selectedDelivery = e.target.value;
+                                    setDelivery(selectedDelivery);
+                                }}
+                            >
+                                <option value="">Select Delivery Method</option>
+                                <option value="Online Payment">
+                                    Online Payment
+                                </option>
+                                <option value="Cash on Delivery">
+                                    Cash on Delivery
+                                </option>
+                            </select>
+                        </div>
+                    </div>
 
-                    <input
-                        value={"buy"}
-                        className="mb-3 btn btn-primary"
-                        type="submit"
-                    />
+                    <div className="flex justify-center">
+                        <button onClick={buyProduct} className="btn">
+                            Buy
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

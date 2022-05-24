@@ -3,7 +3,11 @@ import "./App.css";
 import Login from "./Pages/Account/Login";
 import Register from "./Pages/Account/Register";
 import Blog from "./Pages/Blog/Blog";
+import AddProduct from "./Pages/Dashboard/AddProduct";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import ManageOrders from "./Pages/Dashboard/ManageOrders";
+import ManageProducts from "./Pages/Dashboard/ManageProducts";
+import ManageUsers from "./Pages/Dashboard/ManageUsers";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyReviews from "./Pages/Dashboard/MyReviews";
@@ -35,6 +39,22 @@ function App() {
                     <Route
                         path="myprofile"
                         element={<MyProfile></MyProfile>}
+                    ></Route>
+                    <Route
+                        path="manageorders"
+                        element={<ManageOrders></ManageOrders>}
+                    ></Route>
+                    <Route
+                        path="addproduct"
+                        element={<AddProduct></AddProduct>}
+                    ></Route>
+                    <Route
+                        path="manageproducts"
+                        element={<ManageProducts></ManageProducts>}
+                    ></Route>
+                    <Route
+                        path="manageusers"
+                        element={<ManageUsers></ManageUsers>}
                     ></Route>
                 </Route>
                 <Route

@@ -7,7 +7,7 @@ const AllProducts = () => {
     return (
         <div>
             <div className="mt-10 px-10">
-               <h1 className="text-center text-3xl mb-5">Featured Products</h1>
+                <h1 className="text-center text-3xl mb-5">Featured Products</h1>
                 <div>
                     <div className="grid lg:grid-cols-3 grid-cols-1 gap-7 justify-items-center">
                         {electronics.map((electronic) => (
@@ -19,9 +19,6 @@ const AllProducts = () => {
                         ))}
                     </div>
                 </div>
-            </div>
-            <div className="text-center m-5">
-                <button className="btn">View All</button>
             </div>
         </div>
     );

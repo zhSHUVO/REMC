@@ -1,16 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const ProductDetails = () => {
     const [user] = useAuthState(auth);
-
-    const addressRef = useRef("");
-    const quantityRef = useRef("");
+    // console.log(user);
+    const userPic = user?.photoURL;
 
     const productId = useParams();
     const [product, setProduct] = useState({});
+
     useEffect(() => {
         const url = `http://localhost:5000/product/${productId.id}`;
         fetch(url)
@@ -18,40 +19,32 @@ const ProductDetails = () => {
             .then((data) => setProduct(data));
     }, [productId.id]);
 
-    const [delivery, setDelivery] = useState("");
+    const { register, handleSubmit } = useForm();
 
-    const buyProduct = (event) => {
-        event.preventDefault();
+    const onSubmit = (data) => {
+        const price = parseFloat(product.price * data.quantity).toFixed(2);
 
-        const name = user.displayName;
-        const userMail = user.email;
-        const address = addressRef.current.value;
-        const productname = product.name;
-        const img = product.img;
-        const quantity = quantityRef.current.value;
-        const price = product.price * quantity;
-        const status = "pending";
-
-        const data = {
-            name,
-            userMail,
-            address,
-            productname,
-            img,
-            quantity,
-            price,
-            status,
-            delivery,
+        const order = {
+            name: data.name,
+            userName: user.displayName,
+            userMail: user.email,
+            address: data.address,
+            productname: product.name,
+            img: product.img,
+            quantity: data.quantity,
+            price: price,
+            status: "Pending",
+            delivery: data.payment,
         };
 
-        console.log(data);
+        console.log(order);
 
         fetch("http://localhost:5000/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(order),
         })
             .then((res) => res.json())
             .then((data) => console.log(data));
@@ -75,79 +68,92 @@ const ProductDetails = () => {
                     <p>Minimum order amount: {product.minQuantity} pieces</p>
                     <p>Price: ${product.price}</p>
                 </div>
-                <form className="w-full max-w-sm">
-                    <div className=" mb-6">
-                        <div className="w-full">
-                            <input
-                                readOnly
-                                className="input input-bordered w-full "
-                                id="inline-full-name"
-                                type="text"
-                                value={user?.displayName || ""}
-                            />
-                        </div>
-                    </div>
-                    <div className=" mb-6">
-                        <div className="w-full">
-                            <input
-                                readOnly
-                                className="input input-bordered w-full"
-                                id="inline-full-name"
-                                type="text"
-                                value={user?.email || ""}
-                            />
-                        </div>
-                    </div>
-                    <div className=" mb-6">
-                        <div className="w-full">
-                            <input
-                                ref={addressRef}
-                                placeholder="Your Address"
-                                className="input input-bordered w-full "
-                                id="inline-full-name"
-                                type="text"
-                            />
-                        </div>
-                    </div>
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="flex flex-col lg:w-3/12 w-3/4	shadow-2xl bg-base-100 rounded-xl p-5"
+                >
+                    <input
+                        placeholder="Full Name"
+                        className="mb-3 input input-bordered"
+                        type="text"
+                        {...register("name", {
+                            required: {
+                                value: true,
+                                message: "Name is Required",
+                            },
+                        })}
+                    />
+                    <input
+                        placeholder="Contact Number"
+                        className="mb-3 input input-bordered"
+                        type="text"
+                        {...register("number", {
+                            required: {
+                                value: true,
+                                message: "Contact Number is Required",
+                            },
+                        })}
+                    />
+                    <input
+                        placeholder="Address"
+                        className="mb-3 input input-bordered"
+                        type="text"
+                        {...register("address", {
+                            required: {
+                                value: true,
+                                message: "Delivary Address is Required",
+                            },
+                        })}
+                    />
 
-                    <div className=" mb-6">
-                        <div className="w-full">
-                            <input
-                                ref={quantityRef}
-                                placeholder="Quantity"
-                                className="input input-bordered w-full  "
-                                id="inline-full-name"
-                                type="number"
-                            />
-                        </div>
-                    </div>
-                    <div className=" mb-6">
-                        <div className="w-full">
-                            <select
-                                name="delivery"
-                                className="select select-bordered w-full "
-                                onChange={(e) => {
-                                    const selectedDelivery = e.target.value;
-                                    setDelivery(selectedDelivery);
-                                }}
-                            >
-                                <option value="">Select Delivery Method</option>
-                                <option value="Online Payment">
-                                    Online Payment
-                                </option>
-                                <option value="Cash on Delivery">
-                                    Cash on Delivery
-                                </option>
-                            </select>
-                        </div>
-                    </div>
+                    <input
+                        placeholder="Quantity"
+                        min={product.minQuantity}
+                        max={product.stock}
+                        className="mb-3 input input-bordered"
+                        type="number"
+                        {...register("quantity", {
+                            required: {
+                                value: true,
+                                message: "Order quantity is Required",
+                            },
+                        })}
+                    />
+                    <select
+                        className="mb-3 select select-bordered font-normal"
+                        {...register("payment")}
+                    >
+                        <option value="">Payment Option</option>
+                        <option>Online Payment</option>
+                        <option>Cash on Delivary</option>
+                    </select>
 
-                    <div className="flex justify-center">
-                        <button onClick={buyProduct} className="btn">
-                            Buy
-                        </button>
-                    </div>
+                    <input
+                        value={"buy"}
+                        className="mb-3 btn btn-primary"
+                        type="submit"
+                    />
                 </form>
+                <div className="lg:ml-10 mb-5 p-10 flex justify-center flex-col items-center">
+                    <div className="avatar">
+                        <div className="w-52 rounded-lg">
+                            <img
+                                src={
+                                    userPic
+                                        ? userPic
+                                        : "https://api.lorem.space/image/face?hash=33791"
+                                }
+                                alt="Album"
+                            />
+                        </div>
+                    </div>
+
+                    <p>
+                        Ordered by{" "}
+                        <span className="font-bold">{user?.displayName}</span>
+                    </p>
+                    <p>Email: {user?.email}</p>
+                </div>
             </div>
         </div>
     );

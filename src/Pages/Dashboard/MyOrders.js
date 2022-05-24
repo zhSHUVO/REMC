@@ -14,21 +14,24 @@ const MyOrders = () => {
     }, [user]);
 
     const deleteOrder = (id) => {
-        console.log("deleting ", id);
-        const url = `http://localhost:5000/orders/${id}`;
+        const proceed = window.confirm("Are you sure you want to delete?");
+        if (proceed) {
+            console.log("deleting ", id);
+            const url = `http://localhost:5000/orders/${id}`;
 
-        fetch(url, {
-            method: "DELETE",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.deletedCount > 0) {
-                    const remaining = orders.filter(
-                        (dress) => dress._id !== id
-                    );
-                    setOrder(remaining);
-                }
-            });
+            fetch(url, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.deletedCount > 0) {
+                        const remaining = orders.filter(
+                            (dress) => dress._id !== id
+                        );
+                        setOrder(remaining);
+                    }
+                });
+        }
     };
 
     return (
@@ -97,60 +100,24 @@ const MyOrders = () => {
                                     </td>
                                     <td>{order.status}</td>
                                     <th>
-                                        <label
-                                            htmlFor="my-modal-3"
-                                            className="btn btn-ghost modal-button"
+                                        <button
+                                            onClick={() =>
+                                                deleteOrder(order._id)
+                                            }
+                                            className="border-0"
                                         >
                                             <svg
                                                 stroke="currentColor"
                                                 fill="currentColor"
-                                                strokwidth="0"
-                                                viewBox="0 0 1024 1024"
-                                                height="1.5em"
-                                                width="1.5em"
+                                                strokeWidth="0"
+                                                viewBox="0 0 24 24"
+                                                height="2em"
+                                                width="2em"
                                                 xmlns="http://www.w3.org/2000/svg"
                                             >
-                                                <path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z"></path>
+                                                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"></path>
                                             </svg>
-                                        </label>
-
-                                        <input
-                                            type="checkbox"
-                                            id="my-modal-3"
-                                            className="modal-toggle"
-                                        />
-                                        <div className="modal">
-                                            <div className="modal-box relative">
-                                                <label
-                                                    htmlFor="my-modal-3"
-                                                    className="btn btn-sm btn-circle absolute right-2 top-2"
-                                                >
-                                                    ✕
-                                                </label>
-                                                <h1 className="text-lg font-bold">
-                                                    Are you sure you want to
-                                                    delete this order?
-                                                </h1>
-                                                <button
-                                                    onClick={() =>
-                                                        deleteOrder(order._id)
-                                                    }
-                                                    className="btn btn-ghost btn-circle"
-                                                >
-                                                    <svg
-                                                        stroke="currentColor"
-                                                        fill="currentColor"
-                                                        strokwidth="0"
-                                                        viewBox="0 0 1024 1024"
-                                                        height="2em"
-                                                        width="2em"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                        <path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
+                                        </button>
                                     </th>
                                 </tr>
                             ))}

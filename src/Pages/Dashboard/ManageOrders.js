@@ -44,9 +44,10 @@ const ManageOrders = () => {
                         <thead>
                             <tr>
                                 <th>Customer</th>
+                                <th>Contact Number</th>
+                                <th>Address</th>
                                 <th>Product</th>
                                 <th>Order Quantity</th>
-                                <th>Address</th>
                                 <th>Total Price</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -62,6 +63,12 @@ const ManageOrders = () => {
                                                 {order.userMail}
                                             </span>
                                         </p>
+                                    </td>
+                                    <td>
+                                        <p>{order.number}</p>
+                                    </td>
+                                    <td>
+                                        <p>{order.address}</p>
                                     </td>
                                     <td>
                                         <div className="flex justify-center items-center space-x-3">
@@ -80,8 +87,9 @@ const ManageOrders = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{order.quantity}</td>
-                                    <td>{order.address}</td>
+                                    <td>
+                                        <p>{order.quantity}</p>
+                                    </td>
                                     <td>
                                         <p className="flex items-center justify-center">
                                             ${order.price}
@@ -90,7 +98,9 @@ const ManageOrders = () => {
                                             </span>
                                         </p>
                                     </td>
-                                    <td>{order.status}</td>
+                                    <td>
+                                        <p>{order.status}</p>
+                                    </td>
                                     <th>
                                         <button
                                             onClick={() =>

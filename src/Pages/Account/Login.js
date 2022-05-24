@@ -6,6 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 
 const Login = () => {
     const {
@@ -14,29 +15,51 @@ const Login = () => {
         formState: { errors },
     } = useForm();
 
-    const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] =
+        useSignInWithGoogle(auth);
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
 
+    
+
+    let loginError;
+
+    if (error || googleError) {
+        loginError = (
+            <div className="alert alert-warning my-2">
+                <div>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                        />
+                    </svg>
+                    <span>
+                        Warning: {error?.message || googleError?.message}
+                    </span>
+                </div>
+            </div>
+        );
+    }
+    
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
     useEffect(() => {
-        if (user) {
-            console.log(user);
+        if (user || googleUser) {
+            navigate("/");
         }
-    }, [user]);
+    }, [user, googleUser, navigate]);
 
-    if (loading) {
-        return (
-            <div
-                style={{ height: "300px" }}
-                className="flex justify-center items-center"
-            >
-                <button className="btn loading">loading</button>
-            </div>
-        );
+    if (loading || googleLoading) {
+        return <Loading></Loading>
     }
 
     const onSubmit = (data) => {
@@ -96,6 +119,8 @@ const Login = () => {
                             </span>
                         )}
                     </div>
+
+                    {loginError}
 
                     <input
                         value={"login"}

@@ -6,7 +6,6 @@ import auth from "../../firebase.init";
 
 const ProductDetails = () => {
     const [user] = useAuthState(auth);
-    // console.log(user);
     const userPic = user?.photoURL;
 
     const productId = useParams();
@@ -19,7 +18,11 @@ const ProductDetails = () => {
             .then((data) => setProduct(data));
     }, [productId.id]);
 
-    const { register, handleSubmit } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
     const onSubmit = (data) => {
         const price = parseFloat(product.price * data.quantity).toFixed(2);
@@ -28,6 +31,7 @@ const ProductDetails = () => {
             name: data.name,
             userName: user.displayName,
             userMail: user.email,
+            number: data.number,
             address: data.address,
             productname: product.name,
             img: product.img,
@@ -53,7 +57,7 @@ const ProductDetails = () => {
     return (
         <div>
             {/* details */}
-            <div className="flex flex-col lg:flex-row justify-center items-center">
+            <div className="flex flex-col-reverse lg:flex-row justify-center items-center">
                 <div className="lg:mr-10 mb-5 p-10 flex justify-center flex-col items-center">
                     <img
                         src={product.img}
@@ -72,61 +76,95 @@ const ProductDetails = () => {
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col lg:w-3/12 w-3/4	shadow-2xl bg-base-100 rounded-xl p-5"
                 >
-                    <input
-                        placeholder="Full Name"
-                        className="mb-3 input input-bordered"
-                        type="text"
-                        {...register("name", {
-                            required: {
-                                value: true,
-                                message: "Name is Required",
-                            },
-                        })}
-                    />
-                    <input
-                        placeholder="Contact Number"
-                        className="mb-3 input input-bordered"
-                        type="text"
-                        {...register("number", {
-                            required: {
-                                value: true,
-                                message: "Contact Number is Required",
-                            },
-                        })}
-                    />
-                    <input
-                        placeholder="Address"
-                        className="mb-3 input input-bordered"
-                        type="text"
-                        {...register("address", {
-                            required: {
-                                value: true,
-                                message: "Delivary Address is Required",
-                            },
-                        })}
-                    />
-
-                    <input
-                        placeholder="Quantity"
-                        min={product.minQuantity}
-                        max={product.stock}
-                        className="mb-3 input input-bordered"
-                        type="number"
-                        {...register("quantity", {
-                            required: {
-                                value: true,
-                                message: "Order quantity is Required",
-                            },
-                        })}
-                    />
-                    <select
-                        className="mb-3 select select-bordered font-normal"
-                        {...register("payment")}
-                    >
-                        <option value="">Payment Option</option>
-                        <option>Online Payment</option>
-                        <option>Cash on Delivary</option>
-                    </select>
+                    <div className="indicator w-full">
+                        <input
+                            placeholder="Full Name"
+                            className="mb-3 input input-bordered w-full"
+                            type="text"
+                            {...register("name", {
+                                required: {
+                                    value: true,
+                                },
+                            })}
+                        />
+                        {errors.name && (
+                            <span className="indicator-item badge">
+                                Required
+                            </span>
+                        )}
+                    </div>
+                    <div className="indicator w-full">
+                        <input
+                            placeholder="Contact Number"
+                            className="mb-3 input input-bordered w-full"
+                            type="text"
+                            {...register("number", {
+                                required: {
+                                    value: true,
+                                },
+                            })}
+                        />
+                        {errors.number && (
+                            <span className="indicator-item badge">
+                                Required
+                            </span>
+                        )}
+                    </div>
+                    <div className="indicator w-full">
+                        <input
+                            placeholder="Address"
+                            className="mb-3 input input-bordered w-full"
+                            type="text"
+                            {...register("address", {
+                                required: {
+                                    value: true,
+                                },
+                            })}
+                        />
+                        {errors.address && (
+                            <span className="indicator-item badge">
+                                Required
+                            </span>
+                        )}
+                    </div>
+                    <div className="indicator w-full">
+                        <input
+                            placeholder="Quantity"
+                            min={product.minQuantity}
+                            max={product.stock}
+                            className="mb-3 input input-bordered w-full"
+                            type="number"
+                            {...register("quantity", {
+                                required: {
+                                    value: true,
+                                },
+                            })}
+                        />
+                        {errors.quantity && (
+                            <span className="indicator-item badge">
+                                Required
+                            </span>
+                        )}
+                    </div>
+                    <div className="indicator w-full">
+                        <select
+                            className="mb-3 select select-bordered font-normal w-full"
+                            {...register("payment", {
+                                required: {
+                                    value: true,
+                                },
+                            })}
+                        >
+                            <option value="">Payment Option</option>
+                            <option>Online Payment</option>
+                            <option>Cash on Delivary</option>
+                        </select>
+                        {errors.payment && (
+                            <span className="indicator-item badge">
+                                Required
+                            </span>
+                        )}
+                    </div>
 
                     <input
                         value={"buy"}
@@ -134,9 +172,9 @@ const ProductDetails = () => {
                         type="submit"
                     />
                 </form>
-                <div className="lg:ml-10 mb-5 p-10 flex justify-center flex-col items-center">
+                <div className="lg:ml-10 mb-5 p-10 flex  justify-center flex-col items-center">
                     <div className="avatar">
-                        <div className="w-52 rounded-lg">
+                        <div className="m-5 lg:w-52 rounded-lg">
                             <img
                                 src={
                                     userPic

@@ -15,14 +15,14 @@ const Dashboard = () => {
                     <Link to="/dashboard/myreviews" className="tab">
                         My Reviews
                     </Link>
-                    <Link to="/dashboard/manageorders" className="tab">
-                        Manage Orders
-                    </Link>
                     <Link to="/dashboard/addproduct" className="tab">
                         Add Product
                     </Link>
                     <Link to="/dashboard/manageproducts" className="tab">
                         Manage Products
+                    </Link>
+                    <Link to="/dashboard/manageorders" className="tab">
+                        Manage Orders
                     </Link>
                     <Link to="/dashboard/manageusers" className="tab">
                         Manage Users

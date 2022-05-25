@@ -14,24 +14,36 @@ const Dashboard = () => {
                     <Link to="/dashboard" className="tab">
                         My Profile
                     </Link>
-                    <Link to="/dashboard/myorders" className="tab">
-                        My Orders
-                    </Link>
-                    <Link to="/dashboard/myreviews" className="tab">
-                        My Reviews
-                    </Link>
-                    <Link to="/dashboard/addproduct" className="tab">
-                        Add Product
-                    </Link>
-                    <Link to="/dashboard/manageproducts" className="tab">
-                        Manage Products
-                    </Link>
-                    <Link to="/dashboard/manageorders" className="tab">
-                        Manage Orders
-                    </Link>
-                    {admin && <Link to="/dashboard/manageusers" className="tab">
-                        Manage Users
-                    </Link>}
+                    {!admin && (
+                        <Link to="/dashboard/myorders" className="tab">
+                            My Orders
+                        </Link>
+                    )}
+                    {!admin && (
+                        <Link to="/dashboard/myreviews" className="tab">
+                            My Reviews
+                        </Link>
+                    )}
+                    {admin && (
+                        <Link to="/dashboard/addproduct" className="tab">
+                            Add Product
+                        </Link>
+                    )}
+                    {admin && (
+                        <Link to="/dashboard/manageproducts" className="tab">
+                            Manage Products
+                        </Link>
+                    )}
+                    {admin && (
+                        <Link to="/dashboard/manageorders" className="tab">
+                            Manage Orders
+                        </Link>
+                    )}
+                    {admin && (
+                        <Link to="/dashboard/manageusers" className="tab">
+                            Manage Users
+                        </Link>
+                    )}
                 </div>
             </div>
             <Outlet></Outlet>

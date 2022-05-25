@@ -69,25 +69,25 @@ function App() {
                     <Route
                         path="manageorders"
                         element={
-                            <RequireAuth>
+                            <RequireAdmin>
                                 <ManageOrders></ManageOrders>
-                            </RequireAuth>
+                            </RequireAdmin>
                         }
                     ></Route>
                     <Route
                         path="addproduct"
                         element={
-                            <RequireAuth>
+                            <RequireAdmin>
                                 <AddProduct></AddProduct>
-                            </RequireAuth>
+                            </RequireAdmin>
                         }
                     ></Route>
                     <Route
                         path="manageproducts"
                         element={
-                            <RequireAuth>
+                            <RequireAdmin>
                                 <ManageProducts></ManageProducts>
-                            </RequireAuth>
+                            </RequireAdmin>
                         }
                     ></Route>
                     <Route

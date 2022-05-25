@@ -14,11 +14,11 @@ import ManageUsers from "./Pages/Dashboard/ManageUsers";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyReviews from "./Pages/Dashboard/MyReviews";
+import Purchase from "./Pages/Dashboard/Purchase";
 import Home from "./Pages/Home/Home";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import AllProducts from "./Pages/Products/AllProducts";
 import ProductDetails from "./Pages/Products/ProductDetails";
-import Purchase from "./Pages/Purchase/Purchase";
 import Footer from "./Pages/Universal/Footer";
 import Navbar from "./Pages/Universal/Navbar";
 
@@ -54,6 +54,14 @@ function App() {
                         element={
                             <RequireAuth>
                                 <MyReviews></MyReviews>
+                            </RequireAuth>
+                        }
+                    ></Route>
+                    <Route
+                        path="purchase/:id"
+                        element={
+                            <RequireAuth>
+                                <Purchase></Purchase>
                             </RequireAuth>
                         }
                     ></Route>
@@ -106,9 +114,13 @@ function App() {
                 <Route path="/blog" element={<Blog></Blog>}></Route>
                 <Route
                     path="/product/:id"
-                    element={<ProductDetails></ProductDetails>}
+                    element={
+                        <RequireAuth>
+                            <ProductDetails></ProductDetails>
+                        </RequireAuth>
+                    }
                 ></Route>
-                <Route path="/purchase" element={<Purchase></Purchase>}></Route>
+
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
             </Routes>

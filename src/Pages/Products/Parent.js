@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
-import auth from '../../firebase.init';
-import ProductDetails from './ProductDetails';
-import SingleProduct from './SingleProduct';
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useParams } from "react-router-dom";
+import auth from "../../firebase.init";
+import ProductDetails from "./ProductDetails";
 
 const Parent = () => {
     const [user] = useAuthState(auth);
@@ -27,7 +26,11 @@ const Parent = () => {
     console.log(userInfo);
     return (
         <div>
-            <ProductDetails product={product} setProduct={setProduct} userInfo={userInfo}></ProductDetails>
+            <ProductDetails
+                product={product}
+                setProduct={setProduct}
+                userInfo={userInfo}
+            ></ProductDetails>
         </div>
     );
 };

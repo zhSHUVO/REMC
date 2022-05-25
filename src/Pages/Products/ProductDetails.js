@@ -167,7 +167,7 @@ const ProductDetails = () => {
                     </div>
 
                     <input
-                        value={"buy"}
+                        value={"Add to Cart"}
                         className="mb-3 btn btn-primary"
                         type="submit"
                     />

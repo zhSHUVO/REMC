@@ -10,7 +10,7 @@ const Dashboard = () => {
     return (
         <div>
             <div className="flex justify-center">
-                <div className="tabs w-2/4	 flex justify-evenly">
+                <div className="tabs w-2/4 mb-7 flex justify-evenly">
                     <Link to="/dashboard" className="tab">
                         My Profile
                     </Link>

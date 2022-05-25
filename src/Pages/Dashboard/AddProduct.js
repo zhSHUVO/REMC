@@ -34,7 +34,7 @@ const AddProduct = () => {
             },
             body: JSON.stringify(product),
         })
-        .then((res) => res.json())
+            .then((res) => res.json())
             .then((data) => {
                 alert("New Product Added");
                 console.log("success", data);

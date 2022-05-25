@@ -105,7 +105,7 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <Link
-                                        to="/dashboard/myprofile"
+                                        to="/dashboard"
                                         className="justify-between"
                                     >
                                         Profile

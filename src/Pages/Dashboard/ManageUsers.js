@@ -41,16 +41,25 @@ const ManageUsers = () => {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (res.status === 403) {
+                    toast.error("Failed to make an admin!");
+                }
+                return res.json();
+            })
             .then((data) => {
-                refetch();
-                notify();
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    notify();
+                }
             });
     };
 
     return (
         <div>
-            <h1>Manage Users {users.length}</h1>
+            <h1 className="text-center   text-3xl mb-5">
+                Manage Users {users.length}
+            </h1>
             <div className="flex justify-center">
                 <div className="overflow-x-auto w-11/12">
                     <table className="table text-center w-full">

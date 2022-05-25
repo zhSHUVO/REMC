@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./Pages/Account/Login";
 import Register from "./Pages/Account/Register";
+import RequireAdmin from "./Pages/Account/RequireAdmin";
 import RequireAuth from "./Pages/Account/RequireAuth";
 import Blog from "./Pages/Blog/Blog";
 import AddProduct from "./Pages/Dashboard/AddProduct";
@@ -91,9 +92,9 @@ function App() {
                     <Route
                         path="manageusers"
                         element={
-                            <RequireAuth>
+                            <RequireAdmin>
                                 <ManageUsers></ManageUsers>
-                            </RequireAuth>
+                            </RequireAdmin>
                         }
                     ></Route>
                 </Route>

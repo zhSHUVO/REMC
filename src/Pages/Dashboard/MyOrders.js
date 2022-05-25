@@ -61,7 +61,7 @@ const MyOrders = () => {
             </h1>
             <div className="flex justify-center">
                 <div className="overflow-x-auto w-11/12">
-                    <table className="table text-center w-full">
+                    <table className="table table-auto text-center w-full">
                         <thead>
                             <tr>
                                 <th>

@@ -11,10 +11,10 @@ const Dashboard = () => {
         <div>
             <div className="flex justify-center">
                 <div className="tabs w-2/4	 flex justify-evenly">
-                    <Link to="/dashboard/myprofile" className="tab">
+                    <Link to="/dashboard" className="tab">
                         My Profile
                     </Link>
-                    <Link to="/dashboard" className="tab">
+                    <Link to="/dashboard/myorders" className="tab">
                         My Orders
                     </Link>
                     <Link to="/dashboard/myreviews" className="tab">

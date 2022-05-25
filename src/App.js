@@ -42,7 +42,7 @@ function App() {
                     }
                 >
                     <Route
-                        index
+                        path="myorders"
                         element={
                             <RequireAuth>
                                 <MyOrders></MyOrders>
@@ -58,7 +58,8 @@ function App() {
                         }
                     ></Route>
                     <Route
-                        path="myprofile"
+                        index
+                        // path="myprofile"
                         element={
                             <RequireAuth>
                                 <MyProfile></MyProfile>

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./Pages/Account/Login";
 import Register from "./Pages/Account/Register";
+import RequireAuth from "./Pages/Account/RequireAuth";
 import Blog from "./Pages/Blog/Blog";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import Dashboard from "./Pages/Dashboard/Dashboard";
@@ -30,31 +31,69 @@ function App() {
                     path="/allproducts"
                     element={<AllProducts></AllProducts>}
                 ></Route>
-                <Route path="/dashboard" element={<Dashboard></Dashboard>}>
-                    <Route index element={<MyOrders></MyOrders>}></Route>
+                <Route
+                    path="/dashboard"
+                    element={
+                        <RequireAuth>
+                            <Dashboard></Dashboard>
+                        </RequireAuth>
+                    }
+                >
+                    <Route
+                        index
+                        element={
+                            <RequireAuth>
+                                <MyOrders></MyOrders>
+                            </RequireAuth>
+                        }
+                    ></Route>
                     <Route
                         path="myreviews"
-                        element={<MyReviews></MyReviews>}
+                        element={
+                            <RequireAuth>
+                                <MyReviews></MyReviews>
+                            </RequireAuth>
+                        }
                     ></Route>
                     <Route
                         path="myprofile"
-                        element={<MyProfile></MyProfile>}
+                        element={
+                            <RequireAuth>
+                                <MyProfile></MyProfile>
+                            </RequireAuth>
+                        }
                     ></Route>
                     <Route
                         path="manageorders"
-                        element={<ManageOrders></ManageOrders>}
+                        element={
+                            <RequireAuth>
+                                <ManageOrders></ManageOrders>
+                            </RequireAuth>
+                        }
                     ></Route>
                     <Route
                         path="addproduct"
-                        element={<AddProduct></AddProduct>}
+                        element={
+                            <RequireAuth>
+                                <AddProduct></AddProduct>
+                            </RequireAuth>
+                        }
                     ></Route>
                     <Route
                         path="manageproducts"
-                        element={<ManageProducts></ManageProducts>}
+                        element={
+                            <RequireAuth>
+                                <ManageProducts></ManageProducts>
+                            </RequireAuth>
+                        }
                     ></Route>
                     <Route
                         path="manageusers"
-                        element={<ManageUsers></ManageUsers>}
+                        element={
+                            <RequireAuth>
+                                <ManageUsers></ManageUsers>
+                            </RequireAuth>
+                        }
                     ></Route>
                 </Route>
                 <Route

@@ -12,7 +12,6 @@ const AddProduct = () => {
         event.preventDefault();
 
         const name = nameRef.current.value;
-
         const description = desdescriptionRef.current.value;
         const img = imgRef.current.value;
         const minQuantity = minQuantityRef.current.value;
@@ -28,7 +27,6 @@ const AddProduct = () => {
             price,
         };
 
-        console.log(product);
         fetch("http://localhost:5000/product/", {
             method: "POST",
             headers: {
@@ -36,13 +34,13 @@ const AddProduct = () => {
             },
             body: JSON.stringify(product),
         })
-            .then((res) => res.json())
+        .then((res) => res.json())
             .then((data) => {
                 alert("New Product Added");
                 console.log("success", data);
             });
 
-        // event.target.reset();
+        event.target.reset();
     };
     return (
         <div className="flex flex-col lg:flex-row justify-center items-center">

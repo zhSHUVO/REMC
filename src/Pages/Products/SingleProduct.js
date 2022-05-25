@@ -16,7 +16,7 @@ const SingleProduct = ({ electronic }) => {
                 <img
                     src={img}
                     alt="productImg"
-                    className="mt-5 lg:m-0 lg:ml-7"
+                    className="mt-5 rounded-lg shadow-2xl lg:m-0 lg:ml-7"
                 />
             </figure>
             <div className="card-body">

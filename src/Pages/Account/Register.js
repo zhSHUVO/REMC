@@ -6,7 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-import Loading from "../Loading/Loading";
+import Loading from "../Universal/Loading";
 
 const Register = () => {
     const {

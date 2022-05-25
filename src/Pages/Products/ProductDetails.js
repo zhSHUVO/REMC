@@ -37,7 +37,7 @@ const ProductDetails = () => {
             img: product.img,
             quantity: data.quantity,
             price: price,
-            status: "Pending",
+            status: "Pending...",
             delivery: data.payment,
         };
 

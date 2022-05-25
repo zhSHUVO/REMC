@@ -4,8 +4,9 @@ import {
     useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../Hooks/useToken";
 import Loading from "../Universal/Loading";
 
 const Register = () => {
@@ -26,12 +27,17 @@ const Register = () => {
         await updateProfile({ displayName: data.username });
     };
 
+    const [token] = useToken(user);
+
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    console.log(from);
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate("/dashboard/myprofile");
         }
-    }, [navigate, user]);
+    }, [navigate, token]);
 
     if (loading || updating) {
         return <Loading></Loading>;

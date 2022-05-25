@@ -9,6 +9,7 @@ const Navbar = () => {
     const userPic = user?.photoURL;
     const logout = () => {
         signOut(auth);
+        localStorage.removeItem("accessToken");
     };
 
     return (

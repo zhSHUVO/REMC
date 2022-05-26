@@ -6,6 +6,7 @@ import gear from "../../assests/images/gear.jpg";
 import quality from "../../assests/images/quality.jpg";
 import useElectronics from "../../Hooks/useElectronics";
 import SingleProduct from "../Products/SingleProduct";
+import Review from "../Review/Review";
 import BusinessSummery from "./BusinessSummery";
 
 const Home = () => {
@@ -87,6 +88,7 @@ const Home = () => {
             </div>
 
             <BusinessSummery></BusinessSummery>
+            <Review></Review>
         </div>
     );
 };

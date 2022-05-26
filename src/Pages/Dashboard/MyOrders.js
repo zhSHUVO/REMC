@@ -64,20 +64,21 @@ const MyOrders = () => {
                     <table className="table table-auto text-center w-full">
                         <thead>
                             <tr>
-                                
                                 <th>Product</th>
-                                <th>Order Quantity</th>
+                                <th className="whitespace-nowrap w-px">
+                                    Order Quantity
+                                </th>
                                 <th>Address</th>
                                 <th>Total Price</th>
                                 <th>Status</th>
-                                <th>Pay</th>
+                                <th className="whitespace-nowrap w-px">Pay</th>
+                                <th>Review</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {orders.map((order) => (
                                 <tr key={order._id}>
-                                    
                                     <td>
                                         <div className="flex justify-center items-center space-x-3">
                                             <div className="avatar">
@@ -163,28 +164,36 @@ const MyOrders = () => {
                                             </div>
                                         )}
                                     </td>
+                                    <td>
+                                        <Link
+                                            to="/dashboard/addreview"
+                                            state={{ name: order.productname }}
+                                        >
+                                            Give Review
+                                        </Link>
+                                    </td>
                                     <th>
                                         {order.status === "Paid" ? (
                                             <div
-                                            className="tooltip"
-                                            data-tip="Payment Done"
-                                        >
-                                            <p>
-                                                <svg
-                                                    stroke="currentColor"
-                                                    fill="currentColor"
-                                                    strokeWidth="0"
-                                                    version="1.2"
-                                                    baseProfile="tiny"
-                                                    viewBox="0 0 24 24"
-                                                    height="1.5em"
-                                                    width="1.5em"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <path d="M16.972 6.251c-.967-.538-2.185-.188-2.72.777l-3.713 6.682-2.125-2.125c-.781-.781-2.047-.781-2.828 0-.781.781-.781 2.047 0 2.828l4 4c.378.379.888.587 1.414.587l.277-.02c.621-.087 1.166-.46 1.471-1.009l5-9c.537-.966.189-2.183-.776-2.72z"></path>
-                                                </svg>
-                                            </p>
-                                        </div>
+                                                className="tooltip"
+                                                data-tip="Payment Done"
+                                            >
+                                                <p>
+                                                    <svg
+                                                        stroke="currentColor"
+                                                        fill="currentColor"
+                                                        strokeWidth="0"
+                                                        version="1.2"
+                                                        baseProfile="tiny"
+                                                        viewBox="0 0 24 24"
+                                                        height="1.5em"
+                                                        width="1.5em"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path d="M16.972 6.251c-.967-.538-2.185-.188-2.72.777l-3.713 6.682-2.125-2.125c-.781-.781-2.047-.781-2.828 0-.781.781-.781 2.047 0 2.828l4 4c.378.379.888.587 1.414.587l.277-.02c.621-.087 1.166-.46 1.471-1.009l5-9c.537-.966.189-2.183-.776-2.72z"></path>
+                                                    </svg>
+                                                </p>
+                                            </div>
                                         ) : (
                                             <button
                                                 onClick={() =>

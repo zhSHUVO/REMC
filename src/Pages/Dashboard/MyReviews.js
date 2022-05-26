@@ -50,7 +50,7 @@ const MyReviews = () => {
                                             ? review.image
                                             : "https://api.lorem.space/image/face?hash=34396"
                                     }
-                                    alt="Album"
+                                    alt="profileimage"
                                 />
 
                                 <h2 className="card-title">

@@ -23,11 +23,11 @@ const Review = () => {
                                 <img
                                     className="w-1/5 mr-5 rounded-full"
                                     src={
-                                        review.image
+                                        review?.image
                                             ? review.image
                                             : "https://api.lorem.space/image/face?hash=34396"
                                     }
-                                    alt="Album"
+                                    alt="profileimage"
                                 />
 
                                 <h2 className="card-title">

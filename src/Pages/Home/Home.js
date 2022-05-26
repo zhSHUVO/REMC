@@ -1,4 +1,5 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import assemble from "../../assests/images/assemble.jpg";
 import checking from "../../assests/images/checking.jpg";
@@ -11,6 +12,14 @@ import BusinessSummery from "./BusinessSummery";
 
 const Home = () => {
     const [electronics, setElectronics] = useElectronics();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = (data) => {};
 
     return (
         <div>
@@ -87,6 +96,93 @@ const Home = () => {
             <BusinessSummery></BusinessSummery>{" "}
             <h1 className="text-center text-3xl my-5">User Reviews</h1>
             <Review></Review>
+            <div>
+                <h1 className="text-center text-3xl my-5">
+                    Subscribe to our Newsletter
+                </h1>
+                <div className="flex justify-center items-center ">
+                    <div className="form-control ">
+                        <div className="input-group">
+                            <input
+                                type="text"
+                                placeholder="Your Email Address"
+                                className="input input-bordered"
+                            />
+                            <button className="btn">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1 className="text-center text-3xl my-5">
+                    Contact to Authority
+                </h1>
+                <div className="flex flex-col lg:flex-row justify-center items-center">
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="flex flex-col lg:w-2/4 w-3/4 marker:shadow-2xl bg-base-100 rounded-xl p-5"
+                    >
+                        <div className="indicator w-full">
+                            <input
+                                placeholder="Your Name"
+                                className="mb-3 input input-bordered w-full"
+                                type="text"
+                                {...register("name", {
+                                    required: {
+                                        value: true,
+                                    },
+                                })}
+                            />
+                            {errors.name && (
+                                <span className="indicator-item badge">
+                                    Required
+                                </span>
+                            )}
+                        </div>
+
+                        <div className="indicator w-full">
+                            <input
+                                placeholder="Your Email Address"
+                                className="mb-3 input input-bordered w-full"
+                                type="email"
+                                {...register("email", {
+                                    required: {
+                                        value: true,
+                                    },
+                                })}
+                            />
+                            {errors.email && (
+                                <span className="indicator-item badge">
+                                    Required
+                                </span>
+                            )}
+                        </div>
+                        <div className="indicator w-full">
+                            <textarea
+                                placeholder="Your Message"
+                                className="mb-3 input input-bordered w-full"
+                                type="text-area"
+                                {...register("message", {
+                                    required: {
+                                        value: true,
+                                    },
+                                })}
+                            />
+                            {errors.message && (
+                                <span className="indicator-item badge">
+                                    Required
+                                </span>
+                            )}
+                        </div>
+
+                        <input
+                            value={"Ask"}
+                            className="mb-3 btn btn-primary"
+                            type="submit"
+                        />
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };

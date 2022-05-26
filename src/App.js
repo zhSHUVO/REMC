@@ -5,6 +5,7 @@ import Login from "./Pages/Account/Login";
 import Register from "./Pages/Account/Register";
 import RequireAdmin from "./Pages/Account/RequireAdmin";
 import RequireAuth from "./Pages/Account/RequireAuth";
+import UpdateProfile from "./Pages/Account/UpdateProfile";
 import Blog from "./Pages/Blog/Blog";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import AddReview from "./Pages/Dashboard/AddReview";
@@ -81,6 +82,14 @@ function App() {
                         element={
                             <RequireAuth>
                                 <MyProfile></MyProfile>
+                            </RequireAuth>
+                        }
+                    ></Route>
+                    <Route
+                        path="/dashboard/:usermail"
+                        element={
+                            <RequireAuth>
+                                <UpdateProfile></UpdateProfile>
                             </RequireAuth>
                         }
                     ></Route>

@@ -68,11 +68,19 @@ const MyOrders = () => {
                                 <th className="whitespace-nowrap w-px">
                                     Order Quantity
                                 </th>
-                                <th>Address</th>
-                                <th>Total Price</th>
-                                <th>Status</th>
+                                <th className="whitespace-nowrap w-px">
+                                    Address
+                                </th>
+                                <th className="whitespace-nowrap w-px">
+                                    Total Price
+                                </th>
+                                <th className="whitespace-nowrap w-px">
+                                    Status
+                                </th>
                                 <th className="whitespace-nowrap w-px">Pay</th>
-                                <th>Review</th>
+                                <th className="whitespace-nowrap w-px">
+                                    Review
+                                </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -103,7 +111,7 @@ const MyOrders = () => {
                                         <p>{order.address}</p>
                                     </td>
                                     <td>
-                                        <p className="flex items-center justify-center">
+                                        <p className="flex flex-col items-center">
                                             ${order.price}
                                             <span className="badge badge-ghost ml-2 ">
                                                 {order.delivery}
@@ -111,7 +119,21 @@ const MyOrders = () => {
                                         </p>
                                     </td>
                                     <td>
-                                        <p>{order.status}</p>
+                                        {order.status === "Pending..." ? (
+                                            <p className="flex flex-col items-center">
+                                                {order.status}
+                                            </p>
+                                        ) : (
+                                            <p className="flex flex-col items-center">
+                                                {order.status}
+                                                <span
+                                                    className="tooltip  badge badge-ghost text-xs"
+                                                    data-tip="Transaction Id"
+                                                >
+                                                    {order.transactionId}
+                                                </span>
+                                            </p>
+                                        )}
                                     </td>
                                     <td>
                                         {order.delivery === "Online Payment" &&

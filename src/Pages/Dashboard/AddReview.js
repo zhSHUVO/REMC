@@ -20,6 +20,7 @@ const AddReview = () => {
         const userReview = {
             username: user.displayName,
             image: user.photoURL,
+            email: user.email,
             name,
             rating: star.repeat(data.rating),
             review: data.review,

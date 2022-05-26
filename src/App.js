@@ -22,6 +22,7 @@ import AllProducts from "./Pages/Products/AllProducts";
 import ProductDetails from "./Pages/Products/ProductDetails";
 import Footer from "./Pages/Universal/Footer";
 import Navbar from "./Pages/Universal/Navbar";
+import NotFound from "./Pages/Universal/NotFound";
 
 function App() {
     return (
@@ -132,6 +133,7 @@ function App() {
 
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
+                <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
             <Footer></Footer>
             <Toaster />

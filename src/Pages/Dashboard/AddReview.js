@@ -1,8 +1,11 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const AddReview = () => {
+    const [user] = useAuthState(auth);
     const location = useLocation();
     const { name } = location.state;
     const star = "⭐";
@@ -15,6 +18,8 @@ const AddReview = () => {
 
     const onSubmit = (data) => {
         const userReview = {
+            username: user.displayName,
+            image: user.photoURL,
             name,
             rating: star.repeat(data.rating),
             review: data.review,

@@ -51,7 +51,10 @@ const ProductDetails = () => {
             body: JSON.stringify(order),
         })
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => {
+                alert("Item added to cart.");
+                console.log(data);
+            });
     };
 
     return (

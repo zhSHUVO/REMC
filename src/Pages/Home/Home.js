@@ -17,7 +17,6 @@ const Home = () => {
             <h1 className="text-center text-accent text-4xl mb-8">
                 Root Electronics and Manufacturing Company
             </h1>
-
             {/* carousel */}
             <div className="carousel w-full">
                 <div id="slide1" className="carousel-item relative w-full">
@@ -65,7 +64,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
             {/* Product Showcase */}
             <div className="mt-10 px-10">
                 <h1 className="text-center text-3xl mb-5">Featured Products</h1>
@@ -86,8 +84,8 @@ const Home = () => {
                     <button className="btn">View All</button>
                 </Link>
             </div>
-
-            <BusinessSummery></BusinessSummery>
+            <BusinessSummery></BusinessSummery>{" "}
+            <h1 className="text-center text-3xl my-5">User Reviews</h1>
             <Review></Review>
         </div>
     );

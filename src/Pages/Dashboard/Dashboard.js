@@ -14,12 +14,12 @@ const Dashboard = () => {
                     <Link to="/dashboard" className="tab">
                         My Profile
                     </Link>
-                    {admin && (
+                    {!admin && (
                         <Link to="/dashboard/myorders" className="tab">
                             My Orders
                         </Link>
                     )}
-                    {admin && (
+                    {!admin && (
                         <Link to="/dashboard/myreviews" className="tab">
                             My Reviews
                         </Link>

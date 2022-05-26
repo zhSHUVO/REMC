@@ -9,6 +9,7 @@ import useElectronics from "../../Hooks/useElectronics";
 import SingleProduct from "../Products/SingleProduct";
 import Review from "../Review/Review";
 import BusinessSummery from "./BusinessSummery";
+import Extra from "./Extra";
 
 const Home = () => {
     const [electronics, setElectronics] = useElectronics();
@@ -96,6 +97,20 @@ const Home = () => {
             <BusinessSummery></BusinessSummery>{" "}
             <h1 className="text-center text-3xl my-5">User Reviews</h1>
             <Review></Review>
+            <Extra></Extra>
+            <div>
+                <h1 className="text-center text-3xl my-5">
+                    How do we manage things?
+                </h1>
+                <div className="flex justify-center">
+                    <ul class="steps steps-vertical lg:steps-horizontal">
+                        <li class="step step-primary">Register</li>
+                        <li class="step step-primary">Choose plan</li>
+                        <li class="step">Purchase</li>
+                        <li class="step">Receive Product</li>
+                    </ul>
+                </div>
+            </div>
             <div>
                 <h1 className="text-center text-3xl my-5">
                     Subscribe to our Newsletter

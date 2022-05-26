@@ -60,7 +60,7 @@ const ProductDetails = () => {
     return (
         <div>
             {/* details */}
-            <div className="flex flex-col-reverse lg:flex-row justify-center items-center">
+            <div className="flex flex-col lg:flex-row justify-center items-center">
                 <div className="lg:mr-10 mb-5 p-10 flex justify-center flex-col items-center">
                     <img
                         src={product.img}

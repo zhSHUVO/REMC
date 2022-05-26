@@ -14,8 +14,9 @@ const NotFound = () => {
             </div>
             <div className="text-center">
                 <Link to="/">
-                <button class="btn btn-outline mt-5">Got to home</button>
-
+                    <button className="btn btn-outline mt-5">
+                        Got to home
+                    </button>
                 </Link>
             </div>
         </div>

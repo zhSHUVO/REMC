@@ -20,8 +20,21 @@ const ManageUsers = () => {
         return <Loading></Loading>;
     }
 
-    const notify = () =>
+    const promoteNotify = () =>
         toast.success("User promote to Admin", {
+            style: {
+                border: "1px solid #3D4451",
+                padding: "16px",
+                color: "#3D4451",
+            },
+            iconTheme: {
+                primary: "#3D4451",
+                secondary: "#FFFAEE",
+            },
+        });
+
+    const deleteNotify = () =>
+        toast.success("User deleted", {
             style: {
                 border: "1px solid #3D4451",
                 padding: "16px",
@@ -50,9 +63,28 @@ const ManageUsers = () => {
             .then((data) => {
                 if (data.modifiedCount > 0) {
                     refetch();
-                    notify();
+                    promoteNotify();
                 }
             });
+    };
+
+    const deleteOrder = (user) => {
+        const id = user._id;
+        console.log(id);
+        const proceed = window.confirm("Are you sure you want to delete?");
+        if (proceed) {
+            console.log("deleting ", id);
+            const url = `http://localhost:5000/user/${id}`;
+
+            fetch(url, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    refetch();
+                    deleteNotify();
+                });
+        }
     };
 
     return (
@@ -147,7 +179,10 @@ const ManageUsers = () => {
                                         )}
                                     </td>
                                     <th>
-                                        <button className="border-0">
+                                        <button
+                                            onClick={() => deleteOrder(user)}
+                                            className="border-0"
+                                        >
                                             <svg
                                                 stroke="currentColor"
                                                 fill="currentColor"

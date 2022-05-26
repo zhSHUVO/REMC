@@ -9,7 +9,7 @@ const ManageUsers = () => {
         isLoading,
         refetch,
     } = useQuery("users", () =>
-        fetch("http://localhost:5000/users", {
+        fetch("https://fast-dawn-06225.herokuapp.com/users", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -48,7 +48,7 @@ const ManageUsers = () => {
 
     const promoteToAdmin = (user) => {
         const email = user.email;
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://fast-dawn-06225.herokuapp.com/user/admin/${email}`, {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -74,7 +74,7 @@ const ManageUsers = () => {
         const proceed = window.confirm("Are you sure you want to delete?");
         if (proceed) {
             console.log("deleting ", id);
-            const url = `http://localhost:5000/user/${id}`;
+            const url = `https://fast-dawn-06225.herokuapp.com/user/${id}`;
 
             fetch(url, {
                 method: "DELETE",

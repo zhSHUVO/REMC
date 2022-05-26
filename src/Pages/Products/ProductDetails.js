@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/product/${productId.id}`;
+        const url = `https://fast-dawn-06225.herokuapp.com/product/${productId.id}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setProduct(data));
@@ -43,7 +43,7 @@ const ProductDetails = () => {
 
         console.log(order);
 
-        fetch("http://localhost:5000/orders", {
+        fetch("https://fast-dawn-06225.herokuapp.com/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

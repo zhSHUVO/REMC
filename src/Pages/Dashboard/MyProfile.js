@@ -9,7 +9,7 @@ const MyProfile = () => {
 
     const [currentUser, setCurrentUser] = useState({});
     useEffect(() => {
-        const url = `http://localhost:5000/users/${user.email}`;
+        const url = `https://fast-dawn-06225.herokuapp.com/users/${user.email}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setCurrentUser(data));

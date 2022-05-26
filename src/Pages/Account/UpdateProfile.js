@@ -29,7 +29,7 @@ const UpdateProfile = () => {
         console.log("data", data);
         const email = usermail;
 
-        fetch(`http://localhost:5000/update/users/${email}`, {
+        fetch(`https://fast-dawn-06225.herokuapp.com/update/users/${email}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

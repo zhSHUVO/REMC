@@ -7,7 +7,7 @@ const ManageOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
     useEffect(() => {
         if (user) {
-            fetch("http://localhost:5000/allorders")
+            fetch("https://fast-dawn-06225.herokuapp.com/allorders")
                 .then((res) => res.json())
                 .then((data) => setAllOrders(data));
         }
@@ -17,7 +17,7 @@ const ManageOrders = () => {
         const proceed = window.confirm("Are you sure you want to delete?");
         if (proceed) {
             console.log("deleting ", id);
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://fast-dawn-06225.herokuapp.com/orders/${id}`;
 
             fetch(url, {
                 method: "DELETE",

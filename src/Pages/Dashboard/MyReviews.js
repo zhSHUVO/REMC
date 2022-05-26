@@ -11,14 +11,17 @@ const MyReviews = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/reviews?email=${user.email}`, {
-                method: "GET",
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-            })
+            fetch(
+                `https://fast-dawn-06225.herokuapp.com/reviews?email=${user.email}`,
+                {
+                    method: "GET",
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem(
+                            "accessToken"
+                        )}`,
+                    },
+                }
+            )
                 .then((res) => {
                     if (res.status === 401 && res.status === 403) {
                         signOut(auth);

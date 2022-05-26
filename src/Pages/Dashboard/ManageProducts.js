@@ -8,7 +8,7 @@ const ManageProducts = () => {
         const proceed = window.confirm("Are you sure you want to delete?");
         if (proceed) {
             console.log("deleting ", id);
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://fast-dawn-06225.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: "DELETE",
             })

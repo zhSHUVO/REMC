@@ -27,7 +27,7 @@ const AddProduct = () => {
             price,
         };
 
-        fetch("http://localhost:5000/product/", {
+        fetch("https://fast-dawn-06225.herokuapp.com/product/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

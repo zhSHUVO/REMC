@@ -26,7 +26,7 @@ const AddReview = () => {
             review: data.review,
             suggestion: data.suggestion,
         };
-        fetch("http://localhost:5000/review/", {
+        fetch("https://fast-dawn-06225.herokuapp.com/review/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

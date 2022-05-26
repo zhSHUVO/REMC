@@ -11,14 +11,17 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/orders?email=${user.email}`, {
-                method: "GET",
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-            })
+            fetch(
+                `https://fast-dawn-06225.herokuapp.com/orders?email=${user.email}`,
+                {
+                    method: "GET",
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem(
+                            "accessToken"
+                        )}`,
+                    },
+                }
+            )
                 .then((res) => {
                     if (res.status === 401 && res.status === 403) {
                         signOut(auth);
@@ -37,7 +40,7 @@ const MyOrders = () => {
         const proceed = window.confirm("Are you sure you want to delete?");
         if (proceed) {
             console.log("deleting ", id);
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://fast-dawn-06225.herokuapp.com/orders/${id}`;
 
             fetch(url, {
                 method: "DELETE",

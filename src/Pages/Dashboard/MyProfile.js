@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-            
+
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const MyProfile = () => {
     }, [user.email]);
 
     // const firebaseBg = user?.photoURL;
-    const userBg = currentUser?.img;
+    const userBg = currentUser?.image;
 
     const firebaseName = user?.displayName;
     const userName = currentUser?.name;

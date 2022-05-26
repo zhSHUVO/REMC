@@ -7,7 +7,7 @@ import t3 from "../../assests/images/t3.png";
 
 const Portfolio = () => {
     return (
-        <div className="bg-base-200">
+        <div className="bg-base-200 pb-48">
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
                     <img
@@ -25,7 +25,10 @@ const Portfolio = () => {
                             University of Daffodil.
                         </p>
 
-                        <label for="my-modal-3" className="btn modal-button">
+                        <label
+                            htmlFor="my-modal-3"
+                            className="btn modal-button"
+                        >
                             More About Me
                         </label>
 
@@ -37,7 +40,7 @@ const Portfolio = () => {
                         <div className="modal">
                             <div className="modal-box relative">
                                 <label
-                                    for="my-modal-3"
+                                    htmlFor="my-modal-3"
                                     className="btn btn-sm btn-circle absolute right-2 top-2"
                                 >
                                     ✕
@@ -56,118 +59,151 @@ const Portfolio = () => {
                 </div>
             </div>
             <div>
-                <h1 className="text-center text-5xl font-bold mb-5">
+                <h1 className="text-center text-5xl font-bold  mt-10 mb-5">
                     About Me
                 </h1>
-                <dir>
-                    <div className="flex">
-                        <div>
-                            <h1>PERSONAL INFOS</h1>
-                            <div className="flex">
-                                <dir>
-                                    <p>First Name: Steve</p>
-                                    <p>Age: 27 Years</p>
-                                    <p>Freelance: Available</p>
-                                    <p>Phone: +21621184010</p>
-                                    <p>Skype: steve.milner</p>
-                                </dir>
-                                <dir>
-                                    <p>Last Name: Milner</p>
-                                    <p>Nationality: Tunisian</p>
-                                    <p>Address: Tunis</p>
-                                    <p>Email: you@mail.com</p>
-                                    <p>Langages: French, English</p>
-                                </dir>
+                <div className="flex justify-evenly ">
+                    <dir>
+                        <div className="flex content-center items-center ">
+                            <div className="mr-10">
+                                <h1 className="text-center text-2xl font-bold">
+                                    PERSONAL INFOS
+                                </h1>
+                                <div className="flex">
+                                    <dir>
+                                        <p>
+                                            First Name:{" "}
+                                            <span className="font-bold">
+                                                Zayed Hassan
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Age:{" "}
+                                            <span className="font-bold">
+                                                23 Years
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Freelance:{" "}
+                                            <span className="font-bold">
+                                                Available
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Phone:{" "}
+                                            <span className="font-bold">
+                                                +01855566777
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Github:{" "}
+                                            <span className="font-bold">
+                                                zhSHUVO
+                                            </span>
+                                        </p>
+                                    </dir>
+                                    <dir>
+                                        <p>
+                                            Last Name:{" "}
+                                            <span className="font-bold">
+                                                Bhuiyan
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Nationality:{" "}
+                                            <span className="font-bold">
+                                                Bangladeshi
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Address:{" "}
+                                            <span className="font-bold">
+                                                Dhaka
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Email:{" "}
+                                            <span className="font-bold">
+                                                zhshuvo99@gmail.com
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Langages:{" "}
+                                            <span className="font-bold">
+                                                English
+                                            </span>
+                                        </p>
+                                    </dir>
+                                </div>
+                                <div className="flex justify-center">
+                                    <button className="btn">
+                                        Download CV{" "}
+                                        <svg
+                                            className="pl-3"
+                                            stroke="currentColor"
+                                            fill="currentColor"
+                                            strokeWidth="0"
+                                            viewBox="0 0 512 512"
+                                            width="2em"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
-                            <button className="btn">
-                                Download CV{" "}
-                                <svg
-                                    className="pl-3"
-                                    stroke="currentColor"
-                                    fill="currentColor"
-                                    stroke-width="0"
-                                    viewBox="0 0 512 512"
-                                    width="2em"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"></path>
-                                </svg>
-                            </button>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="card  glass w-96 shadow-xl">
+                                    <div className="card-body text-center">
+                                        <h1 className="text-center text-8xl font-bold">
+                                            5+
+                                        </h1>
+                                        <p>Years of experience</p>
+                                    </div>
+                                </div>
+                                <div className="card  glass w-96 shadow-xl">
+                                    <div className="card-body text-center">
+                                        <h1 className="text-center text-8xl font-bold">
+                                            12+
+                                        </h1>
+                                        <p>Completed projects</p>
+                                    </div>
+                                </div>
+                                <div className="card  glass w-96 shadow-xl">
+                                    <div className="card-body text-center">
+                                        <h1 className="text-center text-8xl font-bold">
+                                            15+
+                                        </h1>
+                                        <p>Happy customer</p>
+                                    </div>
+                                </div>
+                                <div className="card  glass w-96 shadow-xl">
+                                    <div className="card-body text-center">
+                                        <h1 className="text-center text-8xl font-bold">
+                                            21+
+                                        </h1>
+                                        <p>Challenges won</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="card  glass w-96 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">Card title!</h2>
-                                    <p>
-                                        If a dog chews shoes whose shoes does he
-                                        choose?
-                                    </p>
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">
-                                            Buy Now
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card  glass w-96 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">Card title!</h2>
-                                    <p>
-                                        If a dog chews shoes whose shoes does he
-                                        choose?
-                                    </p>
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">
-                                            Buy Now
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card  glass w-96 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">Card title!</h2>
-                                    <p>
-                                        If a dog chews shoes whose shoes does he
-                                        choose?
-                                    </p>
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">
-                                            Buy Now
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card  glass w-96 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">Card title!</h2>
-                                    <p>
-                                        If a dog chews shoes whose shoes does he
-                                        choose?
-                                    </p>
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">
-                                            Buy Now
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div></div>
-                </dir>
+                        <div></div>
+                    </dir>
+                </div>
             </div>
+
             <div>
-                <h1 className="text-center text-5xl font-bold mb-5">
+                <h1 className="text-center text-5xl font-bold  mt-10 mb-5">
                     My Skill
                 </h1>
-                <div>
+                <div className="flex justify-evenly ">
                     <div className="flex  items-center ">
                         <div>
                             <dir className="flex items-center justify-between">
                                 <p>HTML</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="95"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -175,7 +211,7 @@ const Portfolio = () => {
                                 <p>CSS</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="90"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -183,7 +219,7 @@ const Portfolio = () => {
                                 <p>BOOTSTRAP</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="92"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -191,7 +227,7 @@ const Portfolio = () => {
                                 <p>JAVASCRIPT</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="91"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -202,7 +238,7 @@ const Portfolio = () => {
                                 <p>REACT JS</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="85"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -210,7 +246,7 @@ const Portfolio = () => {
                                 <p>NODE JS</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="81"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -218,7 +254,7 @@ const Portfolio = () => {
                                 <p>FIREBASE</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="80"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -226,7 +262,7 @@ const Portfolio = () => {
                                 <p>MONGODB</p>
                                 <progress
                                     className="progress pl-5 w-56"
-                                    value="50"
+                                    value="78"
                                     max="100"
                                 ></progress>
                             </dir>
@@ -235,10 +271,10 @@ const Portfolio = () => {
                 </div>
             </div>
             <div>
-                <h1 className="text-center text-5xl font-bold mb-5">
+                <h1 className="text-center text-5xl font-bold mt-10 mb-5">
                     Some of My Projects
                 </h1>
-                <div className="flex">
+                <div className="flex justify-evenly ">
                     <div>
                         <div className="card card-compact w-96 bg-base-100 shadow-xl">
                             <figure>

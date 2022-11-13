@@ -12,7 +12,7 @@ import BusinessSummery from "./BusinessSummery";
 import Extra from "./Extra";
 
 const Home = () => {
-    const [electronics, setElectronics] = useElectronics();
+    const [electronics] = useElectronics();
 
     const {
         register,
@@ -98,36 +98,7 @@ const Home = () => {
             <h1 className="text-center text-3xl my-5">User Reviews</h1>
             <Review></Review>
             <Extra></Extra>
-            <div>
-                <h1 className="text-center text-3xl my-5">
-                    How do we manage things?
-                </h1>
-                <div className="flex justify-center">
-                    <ul className="steps steps-vertical lg:steps-horizontal">
-                        <li className="step step-primary">Register</li>
-                        <li className="step step-primary">Choose plan</li>
-                        <li className="step">Purchase</li>
-                        <li className="step">Receive Product</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <h1 className="text-center text-3xl my-5">
-                    Subscribe to our Newsletter
-                </h1>
-                <div className="flex justify-center items-center ">
-                    <div className="form-control ">
-                        <div className="input-group">
-                            <input
-                                type="text"
-                                placeholder="Your Email Address"
-                                className="input input-bordered"
-                            />
-                            <button className="btn">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <div>
                 <h1 className="text-center text-3xl my-5">
                     Contact to Authority

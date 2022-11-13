@@ -18,7 +18,6 @@ import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyReviews from "./Pages/Dashboard/MyReviews";
 import Purchase from "./Pages/Dashboard/Purchase";
 import Home from "./Pages/Home/Home";
-import Portfolio from "./Pages/Portfolio/Portfolio";
 import AllProducts from "./Pages/Products/AllProducts";
 import ProductDetails from "./Pages/Products/ProductDetails";
 import Footer from "./Pages/Universal/Footer";
@@ -126,10 +125,7 @@ function App() {
                         }
                     ></Route>
                 </Route>
-                <Route
-                    path="/portfolio"
-                    element={<Portfolio></Portfolio>}
-                ></Route>
+
                 <Route path="/blog" element={<Blog></Blog>}></Route>
                 <Route
                     path="/product/:id"

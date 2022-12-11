@@ -27,7 +27,7 @@ const AddProduct = () => {
             price,
         };
 
-        fetch("https://fast-dawn-06225.herokuapp.com/product/", {
+        fetch("https://remc-server.onrender.com/product/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

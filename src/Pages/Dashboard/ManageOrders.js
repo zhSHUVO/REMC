@@ -7,7 +7,7 @@ const ManageOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
     useEffect(() => {
         if (user) {
-            fetch("https://fast-dawn-06225.herokuapp.com/allorders")
+            fetch("https://remc-server.onrender.com/allorders")
                 .then((res) => res.json())
                 .then((data) => setAllOrders(data));
         }
@@ -17,7 +17,7 @@ const ManageOrders = () => {
         const proceed = window.confirm("Are you sure you want to delete?");
         if (proceed) {
             console.log("deleting ", id);
-            const url = `https://fast-dawn-06225.herokuapp.com/orders/${id}`;
+            const url = `https://remc-server.onrender.com/orders/${id}`;
 
             fetch(url, {
                 method: "DELETE",
@@ -44,13 +44,17 @@ const ManageOrders = () => {
                         <thead>
                             <tr>
                                 <th>Customer</th>
-                                <th className="whitespace-nowrap w-px">Contact Number</th>
+                                <th className="whitespace-nowrap w-px">
+                                    Contact Number
+                                </th>
                                 <th>Address</th>
                                 <th>Product</th>
-                                <th className="whitespace-nowrap w-px">Order Quantity</th>
+                                <th className="whitespace-nowrap w-px">
+                                    Order Quantity
+                                </th>
                                 <th>Total Price</th>
                                 <th>Status</th>
-                                <th >Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -12,7 +12,7 @@ const MyReviews = () => {
     useEffect(() => {
         if (user) {
             fetch(
-                `https://fast-dawn-06225.herokuapp.com/reviews?email=${user.email}`,
+                `https://remc-server.onrender.com/reviews?email=${user.email}`,
                 {
                     method: "GET",
                     headers: {

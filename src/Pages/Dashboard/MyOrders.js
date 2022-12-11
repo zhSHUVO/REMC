@@ -12,7 +12,7 @@ const MyOrders = () => {
     useEffect(() => {
         if (user) {
             fetch(
-                `https://fast-dawn-06225.herokuapp.com/orders?email=${user.email}`,
+                `https://remc-server.onrender.com/orders?email=${user.email}`,
                 {
                     method: "GET",
                     headers: {
@@ -40,7 +40,7 @@ const MyOrders = () => {
         const proceed = window.confirm("Are you sure you want to delete?");
         if (proceed) {
             console.log("deleting ", id);
-            const url = `https://fast-dawn-06225.herokuapp.com/orders/${id}`;
+            const url = `https://remc-server.onrender.com/orders/${id}`;
 
             fetch(url, {
                 method: "DELETE",

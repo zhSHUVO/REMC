@@ -26,7 +26,7 @@ const AddReview = () => {
             review: data.review,
             suggestion: data.suggestion,
         };
-        fetch("https://fast-dawn-06225.herokuapp.com/review/", {
+        fetch("https://remc-server.onrender.com/review/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

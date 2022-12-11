@@ -11,7 +11,7 @@ const Parent = () => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        const url = `https://fast-dawn-06225.herokuapp.com/product/${productId.id}`;
+        const url = `https://remc-server.onrender.com/product/${productId.id}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setProduct(data));

@@ -12,7 +12,7 @@ const stripePromise = loadStripe(
 
 const Purchase = () => {
     const { id } = useParams();
-    const url = `https://fast-dawn-06225.herokuapp.com/orders/${id}`;
+    const url = `https://remc-server.onrender.com/orders/${id}`;
 
     const { data: order, isLoading } = useQuery(["orders", id], () =>
         fetch(url, {
@@ -35,9 +35,7 @@ const Purchase = () => {
                 </figure>
                 <div className="card-body flex justify-center ">
                     <div className="flex flex-col text-center items-center ">
-                        <h2 className="card-title">
-                            Hello, {order.userName}
-                        </h2>
+                        <h2 className="card-title">Hello, {order.userName}</h2>
                         <p>
                             You are about to pay for{" "}
                             <span className="font-bold">

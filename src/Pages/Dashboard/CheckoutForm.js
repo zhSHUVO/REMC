@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
     const { _id, name, userMail, productname, price } = order;
 
     useEffect(() => {
-        fetch("https://fast-dawn-06225.herokuapp.com/create-payment-intent", {
+        fetch("https://remc-server.onrender.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -75,7 +75,7 @@ const CheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id,
             };
-            fetch(`https://fast-dawn-06225.herokuapp.com/orders/${_id}`, {
+            fetch(`https://remc-server.onrender.com/orders/${_id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",

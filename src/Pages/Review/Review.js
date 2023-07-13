@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import defaultBd from "../../assests/images/defaultBg.jpg";
 
 const Review = () => {
     const [reviews, setReviews] = useState([]);
@@ -23,9 +24,7 @@ const Review = () => {
                                 <img
                                     className="w-1/5 mr-5 rounded-full"
                                     src={
-                                        review?.image
-                                            ? review.image
-                                            : "https://api.lorem.space/image/face?hash=34396"
+                                        review?.image ? review.image : defaultBd
                                     }
                                     alt="profileimage"
                                 />

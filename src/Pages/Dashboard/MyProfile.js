@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import defaultBg from "../../assests/images/defaultBg.jpg";
 import auth from "../../firebase.init";
 
 const MyProfile = () => {
@@ -17,6 +18,7 @@ const MyProfile = () => {
 
     // const firebaseBg = user?.photoURL;
     const userBg = currentUser?.image;
+    console.log(currentUser);
 
     const firebaseName = user?.displayName;
     const userName = currentUser?.name;
@@ -32,11 +34,7 @@ const MyProfile = () => {
                 <div
                     className="hero min-h-screen "
                     style={{
-                        backgroundImage: `url(${
-                            userBg
-                                ? userBg
-                                : "https://api.lorem.space/image/fashion"
-                        })`,
+                        backgroundImage: `url(${userBg ? userBg : defaultBg})`,
                     }}
                 >
                     <div className="hero-overlay bg-opacity-60"></div>

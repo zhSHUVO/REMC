@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import defaultBd from "../../assests/images/defaultBg.jpg";
 import auth from "../../firebase.init";
 
 const ProductDetails = () => {
@@ -179,11 +180,7 @@ const ProductDetails = () => {
                     <div className="avatar">
                         <div className="m-5 lg:w-52 rounded-lg">
                             <img
-                                src={
-                                    userPic
-                                        ? userPic
-                                        : "https://api.lorem.space/image/face?hash=33791"
-                                }
+                                src={userPic ? userPic : defaultBd}
                                 alt="Album"
                             />
                         </div>

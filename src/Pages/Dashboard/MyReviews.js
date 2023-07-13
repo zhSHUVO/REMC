@@ -2,11 +2,13 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import defaultBg from "../../assests/images/defaultBg.jpg";
 import auth from "../../firebase.init";
 
 const MyReviews = () => {
     const [user] = useAuthState(auth);
     const [reviews, setReviews] = useState([]);
+    console.log(reviews);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,9 +51,7 @@ const MyReviews = () => {
                                 <img
                                     className="w-1/5 mr-5 rounded-full"
                                     src={
-                                        review.image
-                                            ? review.image
-                                            : "https://api.lorem.space/image/face?hash=34396"
+                                        review.image ? review.image : defaultBg
                                     }
                                     alt="profileimage"
                                 />

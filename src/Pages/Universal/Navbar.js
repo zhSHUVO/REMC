@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import defaultBd from "../../assests/images/defaultBg.jpg";
 import auth from "../../firebase.init";
 
 const Navbar = () => {
@@ -82,11 +83,7 @@ const Navbar = () => {
                                 <div className="avatar">
                                     <div className="w-fit	 rounded-full">
                                         <img
-                                            src={
-                                                userPic
-                                                    ? userPic
-                                                    : "https://api.lorem.space/image/face?hash=33791"
-                                            }
+                                            src={userPic ? userPic : defaultBd}
                                             alt="Album"
                                         />
                                     </div>
